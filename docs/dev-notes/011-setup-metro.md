@@ -4,7 +4,7 @@
 
 [Modern UI Metro Framework導入](http://pgst.blog.jp/archives/1026512278.html)
 
-## 導入手順
+## 手順
 
 ### 1. パッケージを追加
 
