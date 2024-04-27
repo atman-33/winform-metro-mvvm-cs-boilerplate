@@ -66,6 +66,8 @@
             Controls.Add(toolStrip1);
             Name = "BaseForm";
             Text = "BaseForm";
+            FormClosed += BaseForm_FormClosed;
+            Load += BaseForm_Load;
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             ResumeLayout(false);
