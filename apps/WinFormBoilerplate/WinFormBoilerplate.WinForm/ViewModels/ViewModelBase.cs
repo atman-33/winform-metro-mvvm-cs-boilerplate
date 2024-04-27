@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace NDDDWinFormBoilerplate.WinForm.ViewModels
+namespace WinFormBoilerplate.WinForm.ViewModels
 {
     /// <summary>
     /// ViewModelの基底クラス
@@ -30,7 +30,7 @@ namespace NDDDWinFormBoilerplate.WinForm.ViewModels
             }
 
             field = value;
-            var h = this.PropertyChanged;
+            var h = PropertyChanged;
             if (h != null)
             {
                 h(this, new PropertyChangedEventArgs(propertyName));
