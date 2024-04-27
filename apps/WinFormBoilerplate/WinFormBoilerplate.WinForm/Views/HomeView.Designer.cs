@@ -34,19 +34,23 @@
             CalculateButton = new Button();
             label2 = new Label();
             ResultLabel = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // Value1TextBox
             // 
-            Value1TextBox.Location = new Point(55, 105);
+            Value1TextBox.Anchor = AnchorStyles.None;
+            Value1TextBox.Location = new Point(24, 45);
             Value1TextBox.Name = "Value1TextBox";
             Value1TextBox.Size = new Size(100, 25);
             Value1TextBox.TabIndex = 1;
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(192, 109);
+            label1.Location = new Point(170, 49);
             label1.Name = "label1";
             label1.Size = new Size(17, 17);
             label1.TabIndex = 2;
@@ -54,14 +58,16 @@
             // 
             // Value2TextBox
             // 
-            Value2TextBox.Location = new Point(246, 105);
+            Value2TextBox.Anchor = AnchorStyles.None;
+            Value2TextBox.Location = new Point(232, 45);
             Value2TextBox.Name = "Value2TextBox";
             Value2TextBox.Size = new Size(100, 25);
             Value2TextBox.TabIndex = 3;
             // 
             // CalculateButton
             // 
-            CalculateButton.Location = new Point(426, 98);
+            CalculateButton.Anchor = AnchorStyles.None;
+            CalculateButton.Location = new Point(391, 38);
             CalculateButton.Name = "CalculateButton";
             CalculateButton.Size = new Size(80, 38);
             CalculateButton.TabIndex = 4;
@@ -71,8 +77,9 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Location = new Point(55, 174);
+            label2.Location = new Point(49, 164);
             label2.Name = "label2";
             label2.Size = new Size(50, 17);
             label2.TabIndex = 5;
@@ -80,32 +87,48 @@
             // 
             // ResultLabel
             // 
+            ResultLabel.Anchor = AnchorStyles.None;
             ResultLabel.AutoSize = true;
-            ResultLabel.Location = new Point(154, 174);
+            ResultLabel.Location = new Point(154, 164);
             ResultLabel.Name = "ResultLabel";
             ResultLabel.Size = new Size(48, 17);
             ResultLabel.TabIndex = 6;
             ResultLabel.Text = "(result)";
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 5;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.60784F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.84313726F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.6078434F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.6078434F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Controls.Add(Value1TextBox, 0, 0);
+            tableLayoutPanel1.Controls.Add(ResultLabel, 1, 1);
+            tableLayoutPanel1.Controls.Add(label1, 1, 0);
+            tableLayoutPanel1.Controls.Add(label2, 0, 1);
+            tableLayoutPanel1.Controls.Add(Value2TextBox, 2, 0);
+            tableLayoutPanel1.Controls.Add(CalculateButton, 3, 0);
+            tableLayoutPanel1.Location = new Point(20, 60);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Size = new Size(760, 345);
+            tableLayoutPanel1.TabIndex = 7;
             // 
             // HomeView
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(ResultLabel);
-            Controls.Add(label2);
-            Controls.Add(CalculateButton);
-            Controls.Add(Value2TextBox);
-            Controls.Add(label1);
-            Controls.Add(Value1TextBox);
+            Controls.Add(tableLayoutPanel1);
             Name = "HomeView";
             Text = "HomeView";
-            Controls.SetChildIndex(Value1TextBox, 0);
-            Controls.SetChildIndex(label1, 0);
-            Controls.SetChildIndex(Value2TextBox, 0);
-            Controls.SetChildIndex(CalculateButton, 0);
-            Controls.SetChildIndex(label2, 0);
-            Controls.SetChildIndex(ResultLabel, 0);
+            Controls.SetChildIndex(tableLayoutPanel1, 0);
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -118,5 +141,6 @@
         private Button CalculateButton;
         private Label label2;
         private Label ResultLabel;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }
