@@ -1,6 +1,6 @@
 ﻿using WinFormBoilerplate.Domain.Exceptions;
 
-namespace WinFormBoilerplate.Domain.Modules.Helpers
+namespace WinFormBoilerplate.Domain.Modules.Guards
 {
     /// <summary>
     /// ガード処理

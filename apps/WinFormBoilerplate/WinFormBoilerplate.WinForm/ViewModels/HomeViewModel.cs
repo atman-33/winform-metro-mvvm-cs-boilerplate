@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using WinFormBoilerplate.Domain.Modules.Helpers;
+using WinFormBoilerplate.Domain.Modules.Guards;
 
 namespace WinFormBoilerplate.WinForm.ViewModels
 {
