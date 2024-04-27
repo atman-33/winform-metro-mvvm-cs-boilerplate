@@ -21,7 +21,23 @@ namespace WinFormBoilerplate.WinForm
         }
 
         /// <summary>
-        /// 例外共通処理。継承先のViewから呼び出して利用する。
+        /// 参照元から処理を実行すると共に、例外発生時は例外共通処理を行う。
+        /// </summary>
+        /// <param name="action"></param>
+        protected void ExecuteWithErrorHandling(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (Exception ex)
+            {
+                ExceptionProc(ex);
+            }
+        }
+
+        /// <summary>
+        /// 例外共通処理
         /// </summary>
         /// <param name="ex"></param>
         protected void ExceptionProc(Exception ex)
