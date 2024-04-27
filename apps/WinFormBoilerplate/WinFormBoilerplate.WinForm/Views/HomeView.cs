@@ -31,7 +31,9 @@ namespace WinFormBoilerplate.WinForm.Views
             base.ExecuteWithErrorHandling(() =>
             {
                 _viewModel.Calculate();
-            });
+            },
+            GetType(),
+            System.Reflection.MethodBase.GetCurrentMethod());
         }
     }
 }

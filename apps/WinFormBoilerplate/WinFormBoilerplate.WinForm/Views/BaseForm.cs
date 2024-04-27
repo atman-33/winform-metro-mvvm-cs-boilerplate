@@ -1,4 +1,6 @@
-using MetroFramework.Forms;
+ï»¿using MetroFramework.Forms;
+using System.Diagnostics;
+using System.Reflection;
 using WinFormBoilerplate.Domain.Exceptions;
 
 namespace WinFormBoilerplate.WinForm
@@ -6,7 +8,7 @@ namespace WinFormBoilerplate.WinForm
     public partial class BaseForm : MetroForm
     {
         /// <summary>
-        /// ƒƒO
+        /// ãƒ­ã‚°
         /// </summary>
         private static log4net.ILog _logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod()?.DeclaringType);
 
@@ -21,13 +23,32 @@ namespace WinFormBoilerplate.WinForm
         }
 
         /// <summary>
-        /// QÆŒ³‚©‚çˆ—‚ğÀs‚·‚é‚Æ‹¤‚ÉA—áŠO”­¶‚Í—áŠO‹¤’Êˆ—‚ğs‚¤B
+        /// å‚ç…§å…ƒã‹ã‚‰å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ã¨å…±ã«ã€ä¾‹å¤–ç™ºç”Ÿæ™‚ã¯ä¾‹å¤–å…±é€šå‡¦ç†ã‚’è¡Œã†ã€‚
         /// </summary>
-        /// <param name="action"></param>
-        protected void ExecuteWithErrorHandling(Action action)
+        /// <param name="action">å‡¦ç†å†…å®¹</param>
+        /// <param name="memberInfo">å‘¼ã³å‡ºã—å…ƒã®ã‚¯ãƒ©ã‚¹æƒ…å ±</param>
+        /// <param name="methodBase">å‘¼ã³å‡ºã—å…ƒã®é–¢æ•°æƒ…å ±</param>
+        protected void ExecuteWithErrorHandling(
+            Action action,
+            MemberInfo? memberInfo = null,
+            MethodBase? methodBase = null)
         {
             try
             {
+                if (memberInfo is not null || methodBase is not null)
+                {
+                    string info = memberInfo?.Name ?? string.Empty;
+                    info = info != string.Empty ? info + "." : string.Empty;
+                    info = info + methodBase?.Name ?? string.Empty;
+                    info = $"ğŸ‘‰ {info}";
+
+#if DEBUG
+                    Debug.WriteLine(info);
+#else
+                    _logger.Info($"ğŸ‘‰ {info}");
+#endif
+                }
+
                 action();
             }
             catch (Exception ex)
@@ -37,26 +58,31 @@ namespace WinFormBoilerplate.WinForm
         }
 
         /// <summary>
-        /// —áŠO‹¤’Êˆ—
+        /// ä¾‹å¤–å…±é€šå‡¦ç†
         /// </summary>
         /// <param name="ex"></param>
         protected void ExceptionProc(Exception ex)
         {
+#if DEBUG
+            Debug.WriteLine(ex.Message);
+#else
             _logger.Error(ex.Message, ex);
+#endif
+
             MessageBoxIcon icon = MessageBoxIcon.Error;
-            string caption = "ƒGƒ‰[";
+            string caption = "ã‚¨ãƒ©ãƒ¼";
             var exceptionBase = ex as ExceptionBase;
             if (exceptionBase != null)
             {
                 if (exceptionBase.Kind == ExceptionBase.ExceptionKind.Info)
                 {
                     icon = MessageBoxIcon.Information;
-                    caption = "î•ñ";
+                    caption = "æƒ…å ±";
                 }
                 else if (exceptionBase.Kind == ExceptionBase.ExceptionKind.Warning)
                 {
                     icon = MessageBoxIcon.Warning;
-                    caption = "Œx";
+                    caption = "è­¦å‘Š";
                 }
             }
 
@@ -64,23 +90,32 @@ namespace WinFormBoilerplate.WinForm
         }
 
         /// <summary>
-        /// ‹N“®
+        /// èµ·å‹•æ™‚
         /// </summary>
-        /// <param name="sender">ƒRƒ“ƒgƒ[ƒ‹</param>
-        /// <param name="e">ƒCƒxƒ“ƒgˆø”</param>
+        /// <param name="sender">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«</param>
+        /// <param name="e">ã‚¤ãƒ™ãƒ³ãƒˆå¼•æ•°</param>
         private void BaseForm_Load(object sender, EventArgs e)
         {
-            _logger.Info("open:" + this.Name);
+#if DEBUG
+            Debug.WriteLine("ğŸš€ open:" + this.Name);
+#else
+            _logger.Info("ğŸš€ open:" + this.Name);
+#endif
         }
 
         /// <summary>
-        /// I—¹
+        /// çµ‚äº†æ™‚
         /// </summary>
-        /// <param name="sender">ƒRƒ“ƒgƒ[ƒ‹</param>
-        /// <param name="e">ƒCƒxƒ“ƒgˆø”</param>
+        /// <param name="sender">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«</param>
+        /// <param name="e">ã‚¤ãƒ™ãƒ³ãƒˆå¼•æ•°</param>
         private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _logger.Info("close:" + this.Name);
+#if DEBUG
+            Debug.WriteLine("ğŸŒ™ close:" + this.Name);
+#else
+            _logger.Info("ğŸŒ™ close:" + this.Name);
+
+#endif
         }
     }
 }
