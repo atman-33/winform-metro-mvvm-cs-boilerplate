@@ -10,4 +10,23 @@
     <PackageReference Include="log4net" Version="2.0.17" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="StaticValues\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Shared.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="WinFormBoilerplate.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
