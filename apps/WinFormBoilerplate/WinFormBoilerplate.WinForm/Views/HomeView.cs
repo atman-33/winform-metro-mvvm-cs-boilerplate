@@ -51,5 +51,21 @@ namespace WinFormBoilerplate.WinForm.Views
                 base.RequestNavigate(new SampleView());
             });
         }
+
+        /// <summary>
+        /// サンプル画面をダイアログとして開く。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SampleViewDialogButton_Click(object sender, EventArgs e)
+        {
+            var newForm = new SampleView();
+
+            // NOTE: 遷移元の画面を操作可能な状態で、別ウィンドウとして開く。
+            //newForm.Show();
+
+            // NOTE: 遷移元の画面を操作不可能な状態で、別ウィンドウとして開く。
+            newForm.ShowDialog();
+        }
     }
 }

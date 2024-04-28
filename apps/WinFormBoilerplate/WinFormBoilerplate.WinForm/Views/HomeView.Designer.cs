@@ -37,6 +37,7 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             SampleViewButton = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            SampleViewDialogButton = new Button();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -134,10 +135,21 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(SampleViewButton);
+            flowLayoutPanel1.Controls.Add(SampleViewDialogButton);
             flowLayoutPanel1.Location = new Point(20, 63);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(760, 42);
             flowLayoutPanel1.TabIndex = 9;
+            // 
+            // SampleViewDialogButton
+            // 
+            SampleViewDialogButton.Location = new Point(133, 3);
+            SampleViewDialogButton.Name = "SampleViewDialogButton";
+            SampleViewDialogButton.Size = new Size(199, 32);
+            SampleViewDialogButton.TabIndex = 9;
+            SampleViewDialogButton.Text = "サンプル画面へ（別フォーム）";
+            SampleViewDialogButton.UseVisualStyleBackColor = true;
+            SampleViewDialogButton.Click += SampleViewDialogButton_Click;
             // 
             // HomeView
             // 
@@ -168,5 +180,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Button SampleViewButton;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Button SampleViewDialogButton;
     }
 }
