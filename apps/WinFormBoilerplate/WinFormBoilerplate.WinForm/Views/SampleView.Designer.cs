@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             HomeViewButton = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // HomeViewButton
@@ -41,15 +42,28 @@
             HomeViewButton.UseVisualStyleBackColor = true;
             HomeViewButton.Click += HomeViewButton_Click;
             // 
+            // button1
+            // 
+            button1.BackgroundImage = Properties.Resources.hamburger_menu_svgrepo_com;
+            button1.BackgroundImageLayout = ImageLayout.Zoom;
+            button1.Location = new Point(182, 75);
+            button1.Name = "button1";
+            button1.Size = new Size(115, 94);
+            button1.TabIndex = 2;
+            button1.UseVisualStyleBackColor = true;
+            // 
             // SampleView
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.hamburger_menu_svgrepo_com;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(HomeViewButton);
             Name = "SampleView";
             Text = "SampleView";
             Controls.SetChildIndex(HomeViewButton, 0);
+            Controls.SetChildIndex(button1, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -57,5 +71,6 @@
         #endregion
 
         private Button HomeViewButton;
+        private Button button1;
     }
 }
