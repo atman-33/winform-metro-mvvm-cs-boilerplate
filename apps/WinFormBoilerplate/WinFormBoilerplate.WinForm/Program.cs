@@ -27,7 +27,37 @@ namespace WinFormBoilerplate.WinForm
             //_logger.Fatal("致命的なログ");
             //Debug.WriteLine(Shared.IsFake ? "IsFake = true" : "IsFake = false");
 
-            Application.Run(new HomeView());
+            //Application.Run(new HomeView());
+
+            Application.Run(new NavigationContext(new HomeView()));
+        }
+    }
+
+    /// <summary>
+    /// アプリケーション内のフォームやページのナビゲーションを管理するコンテキスト
+    /// </summary>
+    public class NavigationContext : ApplicationContext
+    {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public NavigationContext(BaseForm initialForm)
+        {
+            initialForm.NavigationContext = this;
+            this.MainForm = initialForm;
+        }
+
+        /// <summary>
+        /// 指定した別フォームに切り替える。
+        /// </summary>
+        /// <param name="nextForm"></param>
+        public void SwitchForm(Form nextForm)
+        {
+            var perviousForm = this.MainForm;
+            this.MainForm = nextForm;
+
+            perviousForm?.Close();
+            nextForm.Show();
         }
     }
 }

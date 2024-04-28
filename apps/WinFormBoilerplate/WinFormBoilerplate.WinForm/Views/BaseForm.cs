@@ -5,21 +5,51 @@ using WinFormBoilerplate.Domain.Exceptions;
 
 namespace WinFormBoilerplate.WinForm
 {
+    /// <summary>
+    /// Formの基底クラス
+    /// </summary>
     public partial class BaseForm : MetroForm
     {
+
         /// <summary>
         /// ログ
         /// </summary>
         private static log4net.ILog _logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod()?.DeclaringType);
 
-        public BaseForm()
+        public BaseForm() : this(null)
+        {
+        }
+
+        public BaseForm(ApplicationContext? context)
         {
             InitializeComponent();
+            NavigationContext = (NavigationContext?)context;
 
             toolStripLabel1.Visible = false;
 #if DEBUG
             toolStripLabel1.Visible = true;
 #endif
+        }
+
+        /// <summary>
+        /// フォームやページの遷移を管理するコンテキスト
+        /// </summary>
+        public NavigationContext? NavigationContext { get; set; }
+
+        /// <summary>
+        /// 指定したフォームの画面に遷移する。
+        /// </summary>
+        /// <param name="nextForm"></param>
+        /// <exception cref="Exception"></exception>
+        protected void RequestNavigate(BaseForm nextForm)
+        {
+            if (NavigationContext == null)
+            {
+                throw new Exception("BaseFormに、NavigationContextが設定されていません！コードを見直して下さい。");
+            }
+
+            nextForm.NavigationContext = this.NavigationContext;
+            NavigationContext.SwitchForm(nextForm);
         }
 
         /// <summary>
