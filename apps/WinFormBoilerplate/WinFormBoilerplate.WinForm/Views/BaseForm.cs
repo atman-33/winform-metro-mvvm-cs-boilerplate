@@ -16,10 +16,17 @@ namespace WinFormBoilerplate.WinForm
         /// </summary>
         private static log4net.ILog _logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod()?.DeclaringType);
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public BaseForm() : this(null)
         {
         }
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="context">コンテキスト</param>
         public BaseForm(ApplicationContext? context)
         {
             InitializeComponent();
