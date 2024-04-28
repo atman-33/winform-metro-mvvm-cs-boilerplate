@@ -2,6 +2,9 @@
 
 namespace WinFormBoilerplate.WinForm.Views
 {
+    /// <summary>
+    /// ホーム画面
+    /// </summary>
     public partial class HomeView : BaseForm
     {
         /// <summary>
@@ -34,6 +37,19 @@ namespace WinFormBoilerplate.WinForm.Views
             },
             GetType(),
             System.Reflection.MethodBase.GetCurrentMethod());
+        }
+
+        /// <summary>
+        /// サンプル画面に遷移する。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SampleViewButton_Click(object sender, EventArgs e)
+        {
+            base.ExecuteWithErrorHandling(() =>
+            {
+                base.RequestNavigate(new SampleView());
+            });
         }
     }
 }
